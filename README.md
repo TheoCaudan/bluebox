@@ -1,2 +1,7 @@
 # BlueBox
-(Work in progres...) BlueBox is aim to be a detection / blueteam simulation, starting from a simple packet sniffer on a VM. It is part of my project 'PurpleBox' to make an easily reproductible cybersecurity homelab.
+## Plan :
+
+- Create VM BlueBox : Debian 12, xfce, 4GB RAM, 1vCPU, 15-20GB disk, VMnet2 (192.168.2.11), VMnet1 (192.168.1.11)
+- Update/Upgrade
+- Install Docker
+- Import packet sniffer
