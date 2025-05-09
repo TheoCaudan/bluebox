@@ -1,0 +1,25 @@
+# Logs
+logs/
+*.log
+
+# Runtime data
+*.pid
+*.seed
+*.pid.lock
+
+# Docker volumes
+*.volume
+volume/
+
+# Environment variables
+.env
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db

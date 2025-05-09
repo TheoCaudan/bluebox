@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  suricata:
+    image: jasonish/suricata:latest
+    container_name: suricata
+    network_mode: "host"
+    cap_add:
+      - NET_ADMIN
+      - SYS_NICE
+      - NET_RAW
+    volumes:
+      - ./config:/etc/suricata
+      - ./logs:/var/log/suricata
+    restart: unless-stopped
+    command: -i eth0 --set outputs.eve-log.filetype=syslog

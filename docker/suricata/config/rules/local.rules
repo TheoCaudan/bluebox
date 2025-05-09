@@ -1,0 +1,16 @@
+# Local rules for BlueBox
+# Test rule - ICMP detection
+alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"ICMP test detected"; sid:1000001; rev:1;)
+
+# SSH brute force attempt
+alert tcp $EXTERNAL_NET any -> $HOME_NET 22 (msg:"Potential SSH brute force attempt"; flow:to_server; threshold:type threshold, track by_src, count 5, seconds 60; classtype:attempted-admin; sid:1000002; rev:1;)
+
+# Suspicious outbound connection to C2 known ports
+alert tcp $HOME_NET any -> $EXTERNAL_NET any (msg:"Potential C2 channel detected"; dport:4444; flow:to_server,established; classtype:trojan-activity; sid:1000003; rev:1;)
+
+# SMB scanning detection
+alert tcp $EXTERNAL_NET any -> $HOME_NET 445 (msg:"SMB scanning detected"; flow:to_server; flags:S; threshold:type threshold, track by_src, count 5, seconds 60; classtype:attempted-admin; sid:1000004; rev:1;)
+
+
+
+
