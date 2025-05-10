@@ -1,8 +1,10 @@
+%YAML 1.1
+---
+
 vars:
   address-groups:
     HOME_NET: "[192.168.11.0/24]"
     EXTERNAL_NET: "!$HOME_NET"
-
   port-groups:
     HTTP_PORTS: "80"
     HTTPS_PORTS: "443"
@@ -14,10 +16,20 @@ rule-files:
   - suricata.rules
   - local.rules
 
+runmode: autofp
+
+af-packet:
+  - interface: ens34
+    threads: auto
+    cluster-id: 99
+    cluster-type: cluster_flow
+    defrag: yes
+
 outputs:
   - eve-log:
       enabled: yes
-      filetype: syslog
+      filetype: regular
+      filename: eve.json
       types:
         - alert
         - http
@@ -25,6 +37,11 @@ outputs:
         - tls
         - files
         - ssh
+        - flow
+  - stats:
+      enabled: yes
+      interval: 8
+      logfile: /var/log/suricata/stats.log
 
 logging:
   default-log-level: info
@@ -47,3 +64,7 @@ app-layer:
       enabled: yes
     dns:
       enabled: yes
+    flow:
+      enabled: yes
+
+default-log-dir: /var/log/suricata/

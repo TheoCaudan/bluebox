@@ -4,14 +4,11 @@ services:
   filebeat:
     image: docker.elastic.co/beats/filebeat:8.10.4
     container_name: filebeat
-    user: root
     volumes:
       - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
-      - ./logs:/var/log/suricata:ro
+      - /var/log/suricata:/var/log/suricata:ro
     networks:
       - suricata_elk
-    depends_on:
-      - suricata
     restart: unless-stopped
 
 networks:

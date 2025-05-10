@@ -9,4 +9,5 @@ filebeat.inputs:
 output.logstash:
   hosts: ["logstash:5044"]
 
-logging.level: info
+setup.kibana:
+  host: "kibana:5601"
