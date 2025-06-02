@@ -1,0 +1,17 @@
+# Ignore docker artifacts
+*.log
+*.tar
+data/
+tmp/
+backup/
+
+# Ignore environment files
+.env
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore sensitive or generated files
+elasticsearch/data/
+/var/

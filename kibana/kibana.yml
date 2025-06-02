@@ -1,0 +1,5 @@
+server.host: "0.0.0.0"
+elasticsearch.hosts: ["http://elasticsearch:9200"]
+xpack.encryptedSavedObjects.encryptionKey: "${KIBANA_ENCRYPTED_SAVED_OBJECTS_KEY}"
+xpack.reporting.encryptionKey: "${KIBANA_REPORTING_ENCRYPTION_KEY}"
+xpack.security.encryptionKey: "{KIBANA_SECURITY_ENCRYPTION_KEY}"
